@@ -110,6 +110,7 @@ const components = [
       { label: 'Cache', value: 'Hingga 36MB' },
     ],
     badge: 'Komponen Utama',
+    videoId: 'uIbDrTL30Jk',
     videoLabel: 'Cara Memasang CPU ke Motherboard',
   },
   {
@@ -133,6 +134,7 @@ const components = [
       { label: 'PCIe Slot', value: '1-3 PCIe x16' },
     ],
     badge: 'Fondasi Sistem',
+    videoId: null,
     videoLabel: 'Cara Memasang Motherboard ke Casing',
   },
   {
@@ -156,6 +158,7 @@ const components = [
       { label: 'Latency', value: 'CL14 - CL36' },
     ],
     badge: 'Memori Sistem',
+    videoId: null,
     videoLabel: 'Cara Memasang RAM ke Motherboard',
   },
   {
@@ -179,6 +182,7 @@ const components = [
       { label: 'Output', value: 'HDMI 2.1 / DP 1.4' },
     ],
     badge: 'Kartu Grafis',
+    videoId: null,
     videoLabel: 'Cara Memasang GPU ke Motherboard',
   },
   {
@@ -202,6 +206,7 @@ const components = [
       { label: 'Konektor', value: '24-pin, EPS, PCIe' },
     ],
     badge: 'Sumber Daya',
+    videoId: null,
     videoLabel: 'Cara Memasang PSU ke Casing',
   },
   {
@@ -225,6 +230,7 @@ const components = [
       { label: 'Form Factor', value: 'M.2 / 2.5" / 3.5"' },
     ],
     badge: 'Penyimpanan Data',
+    videoId: null,
     videoLabel: 'Cara Memasang SSD NVMe',
   },
   {
@@ -248,6 +254,7 @@ const components = [
       { label: 'RPM', value: '500 - 3000 RPM' },
     ],
     badge: 'Sistem Pendingin',
+    videoId: null,
     videoLabel: 'Cara Memasang CPU Cooler',
   },
   {
@@ -271,6 +278,7 @@ const components = [
       { label: 'Drive Bay', value: '2-6 Bay 3.5" + 2.5"' },
     ],
     badge: 'Wadah PC',
+    videoId: null,
     videoLabel: 'Cara Memilih dan Menyiapkan Casing',
   },
 ];
@@ -318,6 +326,29 @@ function openComponentModal(id) {
     </div>
   `).join('');
   document.getElementById('modalVideoLabel').textContent = c.videoLabel;
+
+  // Render video — embed YouTube jika videoId tersedia, placeholder jika tidak
+  const videoEl = document.getElementById('modalVideo');
+  if (c.videoId) {
+    videoEl.innerHTML = `
+      <iframe
+        width="100%" height="100%"
+        src="https://www.youtube.com/embed/${c.videoId}"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="border-radius:12px; min-height:160px; display:block">
+      </iframe>
+    `;
+  } else {
+    videoEl.innerHTML = `
+      <div class="video-placeholder-inner">
+        <div class="play-icon-large"><i class="bi bi-play-fill"></i></div>
+        <p>Video Tutorial</p>
+        <small>${c.videoLabel}</small>
+      </div>
+    `;
+  }
 
   new bootstrap.Modal(document.getElementById('componentModal')).show();
 }
