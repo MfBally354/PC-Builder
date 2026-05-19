@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PC Builder | Interactive Assembly Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-glass">
+  <div class="container-xl">
+    <a class="navbar-brand brand-logo" href="#">
+      <span class="brand-icon"><i class="bi bi-cpu-fill"></i></span>
+      <span class="brand-text">PC<span class="brand-accent">Builder</span></span>
+    </a>
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link nav-glow" href="#home" onclick="showPage('home')">Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-glow" href="#components" onclick="showPage('components')">Komponen PC</a></li>
+        <li class="nav-item"><a class="nav-link nav-glow" href="#simulation" onclick="showPage('simulation')">Simulasi</a></li>
+        <li class="nav-item"><a class="nav-link nav-glow" href="#tutorial" onclick="showPage('tutorial')">Video Tutorial</a></li>
+        <li class="nav-item"><a class="nav-link nav-glow" href="#quiz" onclick="showPage('quiz')">Quiz</a></li>
+        <li class="nav-item"><a class="nav-link nav-glow" href="#about" onclick="showPage('about')">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== PAGE: HOME ===== -->
+<section id="page-home" class="page-section active">
+  <!-- Particles Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Hero -->
+  <div class="hero-section">
+    <div class="container-xl h-100">
+      <div class="row align-items-center h-100 py-5">
+        <div class="col-lg-6 hero-left" data-aos="fade-right">
+          <div class="hero-badge mb-3">
+            <span class="badge-dot"></span>
+            <span>Platform Edukasi Teknologi #1</span>
+          </div>
+          <h1 class="hero-title">
+            Belajar Merakit<br/>
+            <span class="gradient-text">PC Secara</span><br/>
+            Interaktif
+          </h1>
+          <p class="hero-sub">
+            Pelajari komponen komputer dan rakit PC secara virtual menggunakan simulasi drag & drop yang imersif. Cocok untuk pemula hingga enthusiast.
+          </p>
+          <div class="hero-stats mb-4">
+            <div class="stat-item"><span class="stat-num">8+</span><span class="stat-label">Komponen</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-item"><span class="stat-num">20+</span><span class="stat-label">Quiz</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Gratis</span></div>
+          </div>
+          <div class="hero-cta d-flex gap-3 flex-wrap">
+            <button class="btn btn-primary-glow" onclick="showPage('components')">
+              <i class="bi bi-book-half me-2"></i>Mulai Belajar
+            </button>
+            <button class="btn btn-outline-glow" onclick="showPage('simulation')">
+              <i class="bi bi-joystick me-2"></i>Mulai Simulasi
+            </button>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-right d-none d-lg-flex justify-content-center align-items-center">
+          <div class="pc-illustration">
+            <div class="pc-glow-ring ring-1"></div>
+            <div class="pc-glow-ring ring-2"></div>
+            <div class="pc-glow-ring ring-3"></div>
+            <div class="pc-case-visual">
+              <div class="pc-case-body">
+                <div class="pc-window">
+                  <div class="circuit-line l1"></div>
+                  <div class="circuit-line l2"></div>
+                  <div class="circuit-line l3"></div>
+                  <div class="gpu-bar"></div>
+                  <div class="ram-bars">
+                    <div class="ram-stick"></div>
+                    <div class="ram-stick"></div>
+                  </div>
+                  <div class="cpu-chip">
+                    <div class="chip-inner">
+                      <i class="bi bi-cpu-fill"></i>
+                    </div>
+                  </div>
+                  <div class="led-strip"></div>
+                </div>
+                <div class="pc-front-panel">
+                  <div class="power-btn"><div class="power-ring"></div></div>
+                  <div class="drive-bay"></div>
+                  <div class="drive-bay"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features -->
+  <div class="features-section">
+    <div class="container-xl">
+      <div class="section-header text-center mb-5">
+        <div class="section-tag">Fitur Utama</div>
+        <h2 class="section-title">Semua Yang Kamu Butuhkan</h2>
+        <p class="section-sub">Platform lengkap untuk belajar komponen PC dari nol hingga mahir</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="showPage('components')">
+            <div class="feature-icon blue"><i class="bi bi-motherboard-fill"></i></div>
+            <h5>Komponen PC</h5>
+            <p>Pelajari 8 komponen utama dengan penjelasan mendalam dan visual interaktif.</p>
+            <div class="feature-arrow"><i class="bi bi-arrow-right"></i></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="showPage('simulation')">
+            <div class="feature-icon cyan"><i class="bi bi-joystick"></i></div>
+            <h5>Simulasi Drag & Drop</h5>
+            <p>Rakit PC virtual secara interaktif dengan sistem slot yang realistis.</p>
+            <div class="feature-arrow"><i class="bi bi-arrow-right"></i></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="showPage('tutorial')">
+            <div class="feature-icon purple"><i class="bi bi-play-circle-fill"></i></div>
+            <h5>Video Tutorial</h5>
+            <p>Tonton tutorial langkah demi langkah dari para expert builder.</p>
+            <div class="feature-arrow"><i class="bi bi-arrow-right"></i></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card" onclick="showPage('quiz')">
+            <div class="feature-icon green"><i class="bi bi-patch-question-fill"></i></div>
+            <h5>Quiz Interaktif</h5>
+            <p>Uji pengetahuanmu dengan 20+ soal quiz bergaya modern dan menarik.</p>
+            <div class="feature-arrow"><i class="bi bi-arrow-right"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Info -->
+  <div class="info-strip">
+    <div class="container-xl">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3 class="info-title">Kenapa Belajar Di Sini?</h3>
+          <p class="info-sub">Simulasi paling interaktif untuk mempelajari komponen PC dengan cara yang menyenangkan dan efektif.</p>
+          <ul class="info-list">
+            <li><i class="bi bi-check-circle-fill text-cyan"></i> Simulasi drag & drop yang realistis</li>
+            <li><i class="bi bi-check-circle-fill text-cyan"></i> Penjelasan komponen yang lengkap</li>
+            <li><i class="bi bi-check-circle-fill text-cyan"></i> Quiz interaktif dengan feedback langsung</li>
+            <li><i class="bi bi-check-circle-fill text-cyan"></i> Desain modern & responsif</li>
+          </ul>
+          <button class="btn btn-primary-glow mt-3" onclick="showPage('simulation')">Coba Simulasi Sekarang</button>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+          <div class="info-visual">
+            <div class="info-card-float card-f1">
+              <i class="bi bi-cpu-fill"></i>
+              <span>CPU</span>
+            </div>
+            <div class="info-card-float card-f2">
+              <i class="bi bi-memory"></i>
+              <span>RAM</span>
+            </div>
+            <div class="info-card-float card-f3">
+              <i class="bi bi-hdd-fill"></i>
+              <span>Storage</span>
+            </div>
+            <div class="info-card-float card-f4">
+              <i class="bi bi-gpu-card"></i>
+              <span>GPU</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE: COMPONENTS ===== -->
+<section id="page-components" class="page-section">
+  <div class="container-xl py-5">
+    <div class="section-header text-center mb-5">
+      <div class="section-tag">Komponen PC</div>
+      <h2 class="section-title">Kenali Setiap Komponen</h2>
+      <p class="section-sub">Klik kartu untuk melihat penjelasan detail setiap komponen</p>
+    </div>
+    <div class="row g-4" id="componentGrid">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Modal Komponen -->
+<div class="modal fade" id="componentModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header border-0">
+        <div class="modal-title-wrap">
+          <div class="modal-icon-wrap" id="modalIcon"></div>
+          <div>
+            <h4 class="modal-title" id="modalTitle"></h4>
+            <span class="modal-badge" id="modalBadge"></span>
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="modal-comp-visual" id="modalVisual"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="modal-info">
+              <h6 class="modal-info-title"><i class="bi bi-info-circle me-2"></i>Deskripsi</h6>
+              <p id="modalDesc" class="modal-desc-text"></p>
+              <h6 class="modal-info-title mt-3"><i class="bi bi-lightning-fill me-2"></i>Fungsi Utama</h6>
+              <ul id="modalFunctions" class="modal-func-list"></ul>
+              <h6 class="modal-info-title mt-3"><i class="bi bi-bar-chart-fill me-2"></i>Spesifikasi Umum</h6>
+              <div id="modalSpecs" class="modal-specs-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-video-section mt-4">
+          <h6 class="modal-info-title mb-3"><i class="bi bi-play-circle me-2"></i>Video Tutorial</h6>
+          <div class="video-placeholder" id="modalVideo">
+            <div class="video-placeholder-inner">
+              <div class="play-icon-large"><i class="bi bi-play-fill"></i></div>
+              <p>Video Tutorial</p>
+              <small id="modalVideoLabel"></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE: SIMULATION ===== -->
+<section id="page-simulation" class="page-section">
+  <!-- Tutorial Video Bar -->
+  <div class="tutorial-bar" id="tutorialBar">
+    <div class="container-xl">
+      <div class="tbar-inner">
+        <div class="tbar-video">
+          <div class="tbar-play-btn" id="tbarPlayBtn" onclick="toggleTutorialVideo()">
+            <i class="bi bi-play-fill" id="tbarPlayIcon"></i>
+          </div>
+          <div class="tbar-progress-wrap">
+            <div class="tbar-title">Tutorial: Cara Merakit PC</div>
+            <div class="tbar-progress-bar"><div class="tbar-progress-fill" id="tbarFill"></div></div>
+          </div>
+          <div class="tbar-time" id="tbarTime">0:00</div>
+        </div>
+        <div class="tbar-hint">
+          <i class="bi bi-lightbulb-fill text-warning me-2"></i>
+          <span id="tbarHint">Drag komponen dari panel kiri ke slot yang sesuai di area tengah</span>
+        </div>
+        <button class="tbar-collapse-btn" onclick="toggleTutorialBar()" title="Toggle Panel">
+          <i class="bi bi-chevron-up" id="tbarChevron"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl sim-container">
+    <div class="sim-header">
+      <div>
+        <h2 class="sim-title">PC Assembly <span class="gradient-text">Simulator</span></h2>
+        <p class="sim-sub">Drag komponen ke slot yang benar untuk merakit PC</p>
+      </div>
+      <div class="sim-progress-wrap">
+        <div class="sim-progress-label">
+          <span>Progress Perakitan</span>
+          <span id="simProgressText">0/8</span>
+        </div>
+        <div class="progress sim-progress-bar">
+          <div class="progress-bar sim-progress-fill" id="simProgressFill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-workspace">
+      <!-- Left Panel: Components -->
+      <div class="sim-panel-left">
+        <div class="panel-header">
+          <i class="bi bi-box-seam me-2"></i>Komponen
+        </div>
+        <div class="sim-components-list" id="simComponentsList">
+          <!-- JS Generated -->
+        </div>
+      </div>
+
+      <!-- Center: Case Area -->
+      <div class="sim-center">
+        <div class="sim-case-wrapper">
+          <div class="sim-case" id="simCase">
+            <div class="case-label">PC Case</div>
+            <div class="sim-slots" id="simSlots">
+              <!-- JS Generated -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Instructions -->
+      <div class="sim-panel-right">
+        <div class="panel-header">
+          <i class="bi bi-list-check me-2"></i>Checklist
+        </div>
+        <div class="sim-checklist" id="simChecklist">
+          <!-- JS Generated -->
+        </div>
+        <div class="panel-divider"></div>
+        <div class="panel-header mt-3">
+          <i class="bi bi-info-circle me-2"></i>Panduan
+        </div>
+        <div class="sim-guide" id="simGuide">
+          <div class="guide-step active-guide" id="guideStep">
+            <div class="guide-icon"><i class="bi bi-hand-index-fill"></i></div>
+            <p>Mulai dengan memasang <strong>Motherboard</strong> ke dalam casing terlebih dahulu.</p>
+          </div>
+        </div>
+        <div class="sim-actions mt-3">
+          <button class="btn btn-outline-glow w-100 mb-2" onclick="resetSimulation()">
+            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset Simulasi
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-glass success-modal">
+        <div class="modal-body text-center py-5">
+          <div class="success-animation mb-4">
+            <div class="success-ring"></div>
+            <div class="success-icon"><i class="bi bi-check-lg"></i></div>
+          </div>
+          <h3 class="success-title">PC Berhasil Dirakit!</h3>
+          <p class="success-sub">Selamat! Kamu berhasil merakit PC virtual dengan sempurna. Pengetahuanmu tentang komputer semakin bertambah!</p>
+          <div class="success-score">
+            <div class="score-circle">
+              <span>100</span>
+              <small>Skor</small>
+            </div>
+          </div>
+          <div class="d-flex gap-3 justify-content-center mt-4">
+            <button class="btn btn-primary-glow" onclick="resetSimulation(); document.getElementById('successModal') && bootstrap.Modal.getInstance(document.getElementById('successModal')).hide()">
+              <i class="bi bi-arrow-repeat me-2"></i>Ulangi
+            </button>
+            <button class="btn btn-outline-glow" onclick="showPage('quiz'); bootstrap.Modal.getInstance(document.getElementById('successModal')).hide()">
+              <i class="bi bi-patch-question me-2"></i>Coba Quiz
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE: TUTORIAL ===== -->
+<section id="page-tutorial" class="page-section">
+  <div class="container-xl py-5">
+    <div class="section-header text-center mb-5">
+      <div class="section-tag">Video Tutorial</div>
+      <h2 class="section-title">Belajar Dari Ahlinya</h2>
+      <p class="section-sub">Tonton panduan visual lengkap untuk setiap tahap perakitan PC</p>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="tutorial-controls mb-5">
+      <div class="tut-search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Cari tutorial..." id="tutSearch" oninput="filterTutorials()"/>
+      </div>
+      <div class="tut-filters" id="tutFilters">
+        <button class="tut-filter-btn active" onclick="filterTutCategory(this,'all')">Semua</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'cpu')">CPU</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'motherboard')">Motherboard</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'ram')">RAM</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'gpu')">GPU</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'storage')">Storage</button>
+        <button class="tut-filter-btn" onclick="filterTutCategory(this,'psu')">PSU</button>
+      </div>
+    </div>
+
+    <div class="row g-4" id="tutorialGrid">
+      <!-- JS Generated -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE: QUIZ ===== -->
+<section id="page-quiz" class="page-section">
+  <div class="container-xl py-5">
+    <div class="quiz-wrapper">
+      <!-- Quiz Start Screen -->
+      <div id="quizStart" class="quiz-screen">
+        <div class="quiz-start-card">
+          <div class="quiz-start-icon">
+            <i class="bi bi-patch-question-fill"></i>
+          </div>
+          <h2 class="quiz-start-title">Quiz Komponen PC</h2>
+          <p class="quiz-start-desc">Uji pengetahuanmu tentang komponen PC dengan 10 pertanyaan pilihan ganda. Setiap jawaban benar mendapat 10 poin.</p>
+          <div class="quiz-info-row">
+            <div class="qi-item"><i class="bi bi-question-circle"></i><span>10 Soal</span></div>
+            <div class="qi-item"><i class="bi bi-clock"></i><span>Tanpa Batas Waktu</span></div>
+            <div class="qi-item"><i class="bi bi-trophy"></i><span>Max 100 Poin</span></div>
+          </div>
+          <button class="btn btn-primary-glow btn-lg mt-4" onclick="startQuiz()">
+            <i class="bi bi-play-fill me-2"></i>Mulai Quiz
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz Question Screen -->
+      <div id="quizQuestion" class="quiz-screen d-none">
+        <div class="quiz-progress-header">
+          <div class="quiz-q-num" id="quizQNum">Soal 1 / 10</div>
+          <div class="quiz-progress-bar-wrap">
+            <div class="progress quiz-progress-bar">
+              <div class="progress-bar quiz-progress-fill" id="quizProgressFill" style="width:10%"></div>
+            </div>
+          </div>
+          <div class="quiz-score-live" id="quizScoreLive">Skor: 0</div>
+        </div>
+        <div class="quiz-card">
+          <div class="quiz-question-icon" id="quizQIcon"><i class="bi bi-cpu"></i></div>
+          <h4 class="quiz-question-text" id="quizQText"></h4>
+          <div class="quiz-options" id="quizOptions"></div>
+        </div>
+      </div>
+
+      <!-- Quiz Result Screen -->
+      <div id="quizResult" class="quiz-screen d-none">
+        <div class="quiz-result-card">
+          <div class="result-trophy" id="resultTrophy">
+            <i class="bi bi-trophy-fill"></i>
+          </div>
+          <h2 class="result-title" id="resultTitle">Hasil Quiz</h2>
+          <div class="result-score-big" id="resultScoreBig">0</div>
+          <p class="result-score-label">dari 100 poin</p>
+          <div class="result-grade" id="resultGrade"></div>
+          <div class="result-stats">
+            <div class="rs-item correct"><i class="bi bi-check-circle-fill"></i><span id="resCorrect">0</span> Benar</div>
+            <div class="rs-item wrong"><i class="bi bi-x-circle-fill"></i><span id="resWrong">0</span> Salah</div>
+          </div>
+          <div class="d-flex gap-3 justify-content-center mt-4 flex-wrap">
+            <button class="btn btn-primary-glow" onclick="startQuiz()">
+              <i class="bi bi-arrow-repeat me-2"></i>Ulangi Quiz
+            </button>
+            <button class="btn btn-outline-glow" onclick="showPage('components')">
+              <i class="bi bi-book me-2"></i>Pelajari Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAGE: ABOUT ===== -->
+<section id="page-about" class="page-section">
+  <div class="container-xl py-5">
+    <div class="section-header text-center mb-5">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">Tentang Proyek Ini</h2>
+      <p class="section-sub">Dibuat dengan semangat untuk memudahkan siapapun belajar merakit PC</p>
+    </div>
+
+    <!-- Project Info -->
+    <div class="row g-4 mb-5">
+      <div class="col-lg-6">
+        <div class="about-card">
+          <div class="about-card-icon"><i class="bi bi-bullseye"></i></div>
+          <h4>Tujuan Proyek</h4>
+          <p>PCBuilder hadir sebagai platform edukasi interaktif yang memungkinkan siapapun — dari pelajar, mahasiswa, hingga enthusiast teknologi — untuk belajar mengenal komponen PC dan simulasi merakitnya secara virtual, tanpa risiko kerusakan hardware nyata.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="about-card">
+          <div class="about-card-icon"><i class="bi bi-code-slash"></i></div>
+          <h4>Teknologi Yang Digunakan</h4>
+          <div class="tech-stack">
+            <span class="tech-badge"><i class="bi bi-filetype-html"></i> HTML5</span>
+            <span class="tech-badge"><i class="bi bi-filetype-css"></i> CSS3</span>
+            <span class="tech-badge"><i class="bi bi-filetype-js"></i> JavaScript</span>
+            <span class="tech-badge"><i class="bi bi-bootstrap"></i> Bootstrap 5</span>
+            <span class="tech-badge"><i class="bi bi-palette"></i> Glassmorphism</span>
+            <span class="tech-badge"><i class="bi bi-phone"></i> Responsive</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class="section-header text-center mb-4">
+      <h3 class="section-title" style="font-size:1.8rem">Tim Pengembang</h3>
+    </div>
+    <div class="row g-4 justify-content-center" id="teamGrid">
+      <!-- JS Generated -->
+    </div>
+
+    <!-- Footer Info -->
+    <div class="about-footer mt-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h4 class="af-title"><span class="brand-accent">PC</span>Builder v1.0</h4>
+          <p class="af-desc">Platform edukasi merakit PC interaktif. Gratis untuk digunakan sebagai media pembelajaran.</p>
+        </div>
+        <div class="col-lg-6 text-lg-end">
+          <div class="af-tags">
+            <span class="af-tag">#EdukasTeknologi</span>
+            <span class="af-tag">#RakitPC</span>
+            <span class="af-tag">#Interaktif</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast Notification -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index:9999">
+  <div id="simToast" class="toast align-items-center border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="simToastBody"></div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/simulation.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>
