@@ -53,7 +53,6 @@ function showPage(pageId) {
       ctx.globalAlpha = p.alpha;
       ctx.fill();
 
-      // Connect nearby particles
       for (let j = i + 1; j < particles.length; j++) {
         const q = particles[j];
         const dx = p.x - q.x, dy = p.y - q.y;
@@ -307,15 +306,12 @@ function renderComponents() {
 }
 
 // ----- OPEN COMPONENT MODAL -----
-let _modalListenerAdded = false;
-
 function openComponentModal(id) {
   const c = components.find(x => x.id === id);
   if (!c) return;
 
   const modalEl = document.getElementById('componentModal');
 
-  // Isi konten modal
   document.getElementById('modalIcon').innerHTML = `<i class="${c.iconClass}" style="color:${c.color}"></i>`;
   document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${c.color}20, ${c.color}10)`;
   document.getElementById('modalIcon').style.border = `1px solid ${c.color}30`;
@@ -332,7 +328,7 @@ function openComponentModal(id) {
   `).join('');
   document.getElementById('modalVideoLabel').textContent = c.videoLabel;
 
-  // Render video
+  // Render video — embed YouTube jika videoId ada, placeholder jika tidak
   const videoEl = document.getElementById('modalVideo');
   if (c.videoId) {
     videoEl.innerHTML = `
@@ -342,7 +338,7 @@ function openComponentModal(id) {
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-        style="border-radius:12px; min-height:160px; display:block">
+        style="border-radius:12px; min-height:200px; display:block">
       </iframe>
     `;
   } else {
@@ -355,17 +351,7 @@ function openComponentModal(id) {
     `;
   }
 
-  // Daftarkan listener hidden SEKALI SAJA seumur hidup halaman
-  if (!_modalListenerAdded) {
-    _modalListenerAdded = true;
-    modalEl.addEventListener('hidden.bs.modal', function () {
-      // Stop iframe saat modal ditutup
-      const iframe = document.querySelector('#modalVideo iframe');
-      if (iframe) iframe.src = iframe.src;
-    });
-  }
-
-  // getOrCreateInstance: ambil instance yg ada atau buat baru — TIDAK membuat duplikat
+  // FIX: getOrCreateInstance — tidak membuat instance baru jika sudah ada
   bootstrap.Modal.getOrCreateInstance(modalEl).show();
 }
 
