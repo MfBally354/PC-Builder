@@ -505,25 +505,21 @@
       <p class="section-sub">Tonton panduan visual lengkap untuk setiap tahap perakitan PC</p>
     </div>
 
-    <!-- Search & Filter -->
-    <div class="tutorial-controls mb-5">
-      <div class="tut-search">
-        <i class="bi bi-search"></i>
-        <input type="text" placeholder="Cari tutorial..." id="tutSearch" oninput="filterTutorials()"/>
+    <!-- Single Full PC Build Video -->
+    <div class="full-tutorial-wrapper mx-auto" style="max-width:1100px">
+      <div class="ratio ratio-16x9" style="border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.08)">
+        <iframe
+          id="fullTutorialVideo"
+          src="https://www.youtube.com/embed/BHACKCNDMW8"
+          title="Tutorial Lengkap Perakitan PC"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
-      <div class="tut-filters" id="tutFilters">
-        <button class="tut-filter-btn active" onclick="filterTutCategory(this,'all')">Semua</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'cpu')">CPU</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'motherboard')">Motherboard</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'ram')">RAM</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'gpu')">GPU</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'storage')">Storage</button>
-        <button class="tut-filter-btn" onclick="filterTutCategory(this,'psu')">PSU</button>
+      <div class="text-center mt-4">
+        <h4 style="color:var(--text-primary,#fff); font-weight:700">Tutorial Lengkap Merakit PC dari Awal Hingga Selesai</h4>
+        <p style="color:var(--text-muted,#94a3b8)">Panduan langkah demi langkah dari unboxing komponen sampai PC menyala.</p>
       </div>
-    </div>
-
-    <div class="row g-4" id="tutorialGrid">
-      <!-- JS Generated -->
     </div>
   </div>
 </section>
