@@ -407,7 +407,7 @@
       <div class="sim-progress-wrap">
         <div class="sim-progress-label">
           <span>Progress Perakitan</span>
-          <span id="simProgressText">0/8</span>
+          <span id="simProgressText">0/7</span>
         </div>
         <div class="progress sim-progress-bar">
           <div class="progress-bar sim-progress-fill" id="simProgressFill" style="width:0%"></div>
@@ -426,15 +426,21 @@
         </div>
       </div>
 
-      <!-- Center: Case Area -->
+      <!-- Center: Drop Stage Area (Motherboard → Fullset PC) -->
       <div class="sim-center">
-        <div class="sim-case-wrapper">
-          <div class="sim-case" id="simCase">
-            <div class="case-label">PC Case</div>
-            <div class="sim-slots" id="simSlots">
-              <!-- JS Generated -->
+        <div class="sim-stage-wrapper">
+          <div class="sim-stage" id="simStage"
+               ondragover="onStageDragOver(event)"
+               ondragleave="onStageDragLeave(event)"
+               ondrop="onStageDrop(event)">
+            <div class="stage-glow"></div>
+            <img id="simStageImg" src="assets/sim/stage-0.png" alt="PC Build Stage" class="sim-stage-img" />
+            <div class="stage-hint" id="stageHint">
+              <i class="bi bi-arrow-left-circle-fill"></i>
+              Drag komponen ke sini
             </div>
           </div>
+          <div class="stage-caption" id="stageCaption">Motherboard kosong — siap dirakit</div>
         </div>
       </div>
 
@@ -510,7 +516,7 @@
       <div class="ratio ratio-16x9" style="border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.08)">
         <iframe
           id="fullTutorialVideo"
-          src="https://www.youtube.com/embed/BHACKCNDMW8"
+          src="https://www.youtube.com/embed/DC-Xn2C_L1U"
           title="Tutorial Lengkap Perakitan PC"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
