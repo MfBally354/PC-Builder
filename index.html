@@ -371,51 +371,6 @@
   </div>
 </section>
 
-<!-- Modal Komponen -->
-<div class="modal fade" id="componentModal" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content modal-glass">
-      <div class="modal-header border-0">
-        <div class="modal-title-wrap">
-          <div class="modal-icon-wrap" id="modalIcon"></div>
-          <div>
-            <h4 class="modal-title" id="modalTitle"></h4>
-            <span class="modal-badge" id="modalBadge"></span>
-          </div>
-        </div>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row g-4">
-          <div class="col-md-6">
-            <div class="modal-comp-visual" id="modalVisual"></div>
-          </div>
-          <div class="col-md-6">
-            <div class="modal-info">
-              <h6 class="modal-info-title"><i class="bi bi-info-circle me-2"></i>Deskripsi</h6>
-              <p id="modalDesc" class="modal-desc-text"></p>
-              <h6 class="modal-info-title mt-3"><i class="bi bi-lightning-fill me-2"></i>Fungsi Utama</h6>
-              <ul id="modalFunctions" class="modal-func-list"></ul>
-              <h6 class="modal-info-title mt-3"><i class="bi bi-bar-chart-fill me-2"></i>Spesifikasi Umum</h6>
-              <div id="modalSpecs" class="modal-specs-grid"></div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-video-section mt-4">
-          <h6 class="modal-info-title mb-3"><i class="bi bi-play-circle me-2"></i>Video Tutorial</h6>
-          <div class="video-placeholder" id="modalVideo">
-            <div class="video-placeholder-inner">
-              <div class="play-icon-large"><i class="bi bi-play-fill"></i></div>
-              <p>Video Tutorial</p>
-              <small id="modalVideoLabel"></small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ===== PAGE: SIMULATION ===== -->
 <section id="page-simulation" class="page-section">
   <!-- Tutorial Video Bar -->
@@ -709,6 +664,51 @@
     <div class="d-flex">
       <div class="toast-body" id="simToastBody"></div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL KOMPONEN — di luar semua section agar backdrop Bootstrap tidak stuck ===== -->
+<div class="modal fade" id="componentModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content modal-glass">
+      <div class="modal-header border-0">
+        <div class="modal-title-wrap">
+          <div class="modal-icon-wrap" id="modalIcon"></div>
+          <div>
+            <h4 class="modal-title" id="modalTitle"></h4>
+            <span class="modal-badge" id="modalBadge"></span>
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="modal-comp-visual" id="modalVisual"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="modal-info">
+              <h6 class="modal-info-title"><i class="bi bi-info-circle me-2"></i>Deskripsi</h6>
+              <p id="modalDesc" class="modal-desc-text"></p>
+              <h6 class="modal-info-title mt-3"><i class="bi bi-lightning-fill me-2"></i>Fungsi Utama</h6>
+              <ul id="modalFunctions" class="modal-func-list"></ul>
+              <h6 class="modal-info-title mt-3"><i class="bi bi-bar-chart-fill me-2"></i>Spesifikasi Umum</h6>
+              <div id="modalSpecs" class="modal-specs-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-video-section mt-4">
+          <h6 class="modal-info-title mb-3"><i class="bi bi-play-circle me-2"></i>Video Tutorial</h6>
+          <div class="video-placeholder" id="modalVideo">
+            <div class="video-placeholder-inner">
+              <div class="play-icon-large"><i class="bi bi-play-fill"></i></div>
+              <p>Video Tutorial</p>
+              <small id="modalVideoLabel"></small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
