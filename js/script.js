@@ -307,10 +307,16 @@ function renderComponents() {
 }
 
 // ----- OPEN COMPONENT MODAL -----
+// Simpan instance modal supaya tidak dibuat ulang tiap klik
+let _compModal = null;
+
 function openComponentModal(id) {
   const c = components.find(x => x.id === id);
   if (!c) return;
 
+  const modalEl = document.getElementById('componentModal');
+
+  // Isi konten modal
   document.getElementById('modalIcon').innerHTML = `<i class="${c.iconClass}" style="color:${c.color}"></i>`;
   document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${c.color}20, ${c.color}10)`;
   document.getElementById('modalIcon').style.border = `1px solid ${c.color}30`;
@@ -327,7 +333,7 @@ function openComponentModal(id) {
   `).join('');
   document.getElementById('modalVideoLabel').textContent = c.videoLabel;
 
-  // Render video — embed YouTube jika videoId tersedia, placeholder jika tidak
+  // Render video
   const videoEl = document.getElementById('modalVideo');
   if (c.videoId) {
     videoEl.innerHTML = `
@@ -350,7 +356,19 @@ function openComponentModal(id) {
     `;
   }
 
-  new bootstrap.Modal(document.getElementById('componentModal')).show();
+  // Gunakan satu instance modal yang sama — jangan buat baru tiap klik
+  if (!_compModal) {
+    _compModal = new bootstrap.Modal(modalEl);
+
+    // Daftarkan listener hidden SEKALI SAJA di sini
+    modalEl.addEventListener('hidden.bs.modal', function () {
+      const vEl = document.getElementById('modalVideo');
+      const iframe = vEl ? vEl.querySelector('iframe') : null;
+      if (iframe) { iframe.src = ''; }
+    });
+  }
+
+  _compModal.show();
 }
 
 // ----- TUTORIAL DATA -----

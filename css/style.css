@@ -137,7 +137,15 @@ body {
   min-height: 100vh;
   display: flex; align-items: center;
   position: relative;
-  overflow: hidden;
+}
+
+.hero-section .container-xl {
+  position: relative; z-index: 1;
+}
+
+.hero-section .row {
+  min-height: 80vh;
+  padding: 100px 0 60px;
 }
 
 .hero-section::before {
@@ -149,7 +157,11 @@ body {
   pointer-events: none;
 }
 
-.hero-left, .hero-right { position: relative; z-index: 1; }
+.hero-left { position: relative; z-index: 1; }
+.hero-right {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1207,6 +1219,79 @@ body {
   background: rgba(6,182,212,0.08); border: 1px solid rgba(6,182,212,0.2);
   color: var(--cyan); border-radius: 50px; padding: 5px 14px;
   font-size: 0.8rem; font-family: var(--font-display);
+}
+
+/* ===== HERO SVG ILLUSTRATION ===== */
+.hero-svg-wrap {
+  width: 100%; max-width: 480px;
+  position: relative; z-index: 1;
+}
+
+.hero-svg {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 0 30px rgba(6,182,212,0.12));
+}
+
+/* SVG Animations */
+.svg-ring {
+  animation: svgRingPulse 4s ease-in-out infinite;
+}
+.svg-ring-2 {
+  animation: svgRingPulse 4s ease-in-out infinite 1.5s;
+}
+@keyframes svgRingPulse {
+  0%,100% { opacity: 0.4; transform-origin: center; }
+  50% { opacity: 1; }
+}
+
+.spin-slow {
+  transform-origin: center;
+  animation: spinSlow 8s linear infinite;
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.led-anim {
+  animation: ledShift 3s linear infinite;
+}
+@keyframes ledShift {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.power-pulse {
+  animation: powerGlow 1.5s ease-in-out infinite;
+}
+@keyframes powerGlow {
+  0%,100% { opacity: 0.5; r: 5; }
+  50% { opacity: 1; r: 7; }
+}
+
+.hdd-blink {
+  animation: hddBlink 1s ease-in-out infinite;
+}
+@keyframes hddBlink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.ram-led {
+  animation: ramLed 2s ease-in-out infinite alternate;
+}
+@keyframes ramLed {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+.float-label {
+  animation: floatLabel 4s ease-in-out infinite;
+}
+@keyframes floatLabel {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* ===== RESPONSIVE ===== */
