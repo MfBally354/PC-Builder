@@ -482,32 +482,32 @@ function filterTutorials() {
 // ----- TEAM DATA -----
 const team = [
   {
-    name: 'Ahmad Fauzi',
+    name: 'IQBAL GUNTUR BISMOKO',
     role: 'Lead Developer',
     emoji: '👨‍💻',
     color: '#2563EB',
     desc: 'Bertanggung jawab atas arsitektur sistem, simulasi drag & drop, dan JavaScript.',
   },
   {
-    name: 'Sari Dewi',
-    role: 'UI/UX Designer',
+    name: 'KEVIN ABHISTA SHANWA RAJENDRA',
+    role: 'Co. Developer',
     emoji: '🎨',
     color: '#8B5CF6',
     desc: 'Merancang desain futuristik, animasi, dan pengalaman pengguna yang imersif.',
   },
   {
-    name: 'Budi Santoso',
-    role: 'Content Creator',
+    name: 'FAIRUS ZAKY AHMADDIEN',
+    role: 'Animator',
     emoji: '📚',
     color: '#06B6D4',
-    desc: 'Menyusun konten edukatif tentang komponen PC dan soal-soal quiz.',
+    desc: 'membuat konten mengenai video animasi dalam media pembelajaran.',
   },
   {
-    name: 'Rina Kusuma',
-    role: 'QA & Testing',
+    name: 'FARREL ALENTA HANAN PRAKOSA',
+    role: 'Voice Over',
     emoji: '🔍',
     color: '#10B981',
-    desc: 'Memastikan semua fitur berjalan dengan sempurna di semua perangkat.',
+    desc: 'Mengisi suara video animasi.',
   },
 ];
 
