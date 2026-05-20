@@ -307,8 +307,7 @@ function renderComponents() {
 }
 
 // ----- OPEN COMPONENT MODAL -----
-// Simpan instance modal supaya tidak dibuat ulang tiap klik
-let _compModal = null;
+let _modalListenerAdded = false;
 
 function openComponentModal(id) {
   const c = components.find(x => x.id === id);
@@ -356,19 +355,18 @@ function openComponentModal(id) {
     `;
   }
 
-  // Gunakan satu instance modal yang sama — jangan buat baru tiap klik
-  if (!_compModal) {
-    _compModal = new bootstrap.Modal(modalEl);
-
-    // Daftarkan listener hidden SEKALI SAJA di sini
+  // Daftarkan listener hidden SEKALI SAJA seumur hidup halaman
+  if (!_modalListenerAdded) {
+    _modalListenerAdded = true;
     modalEl.addEventListener('hidden.bs.modal', function () {
-      const vEl = document.getElementById('modalVideo');
-      const iframe = vEl ? vEl.querySelector('iframe') : null;
-      if (iframe) { iframe.src = ''; }
+      // Stop iframe saat modal ditutup
+      const iframe = document.querySelector('#modalVideo iframe');
+      if (iframe) iframe.src = iframe.src;
     });
   }
 
-  _compModal.show();
+  // getOrCreateInstance: ambil instance yg ada atau buat baru — TIDAK membuat duplikat
+  bootstrap.Modal.getOrCreateInstance(modalEl).show();
 }
 
 // ----- TUTORIAL DATA -----
