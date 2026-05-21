@@ -109,7 +109,7 @@ const components = [
       { label: 'Cache', value: 'Hingga 36MB' },
     ],
     badge: 'Komponen Utama',
-    videoId: 'uIbDrTL30Jk',
+    driveId: '1Jvs_-95d-Lf_0vMXfvkhMuXFMQPa1_Ti',
     videoLabel: 'Cara Memasang CPU ke Motherboard',
   },
   {
@@ -133,7 +133,7 @@ const components = [
       { label: 'PCIe Slot', value: '1-3 PCIe x16' },
     ],
     badge: 'Fondasi Sistem',
-    videoId: null,
+    driveId: '1BKFpj0BSvPD7YF7RLWVbsvNJqh_XX3Hb',
     videoLabel: 'Cara Memasang Motherboard ke Casing',
   },
   {
@@ -157,7 +157,7 @@ const components = [
       { label: 'Latency', value: 'CL14 - CL36' },
     ],
     badge: 'Memori Sistem',
-    videoId: null,
+    driveId: '1sLfMS7Sco6u0ri4BAJg85lHhX08rY7te',
     videoLabel: 'Cara Memasang RAM ke Motherboard',
   },
   {
@@ -181,7 +181,7 @@ const components = [
       { label: 'Output', value: 'HDMI 2.1 / DP 1.4' },
     ],
     badge: 'Kartu Grafis',
-    videoId: null,
+    driveId: '1G5p2Ut7gNZ_TXBDNnTiNvLGRzWequCSg',
     videoLabel: 'Cara Memasang GPU ke Motherboard',
   },
   {
@@ -205,7 +205,7 @@ const components = [
       { label: 'Konektor', value: '24-pin, EPS, PCIe' },
     ],
     badge: 'Sumber Daya',
-    videoId: null,
+    driveId: '14N_HuVkhBXHfOjjlzVVHqXR0RIC4FJmU',
     videoLabel: 'Cara Memasang PSU ke Casing',
   },
   {
@@ -229,7 +229,7 @@ const components = [
       { label: 'Form Factor', value: 'M.2 / 2.5" / 3.5"' },
     ],
     badge: 'Penyimpanan Data',
-    videoId: null,
+    driveId: '1NSkXbOJW8rfCmzbrIqTg9M3tQmmaM5be',
     videoLabel: 'Cara Memasang SSD NVMe',
   },
   {
@@ -253,7 +253,7 @@ const components = [
       { label: 'RPM', value: '500 - 3000 RPM' },
     ],
     badge: 'Sistem Pendingin',
-    videoId: null,
+    driveId: '1_lcbQXkuaDV7IMtZkxXTZepjIlYHrGqz',
     videoLabel: 'Cara Memasang CPU Cooler',
   },
   {
@@ -277,7 +277,7 @@ const components = [
       { label: 'Drive Bay', value: '2-6 Bay 3.5" + 2.5"' },
     ],
     badge: 'Wadah PC',
-    videoId: null,
+    driveId: '1aIBaT0BzhncNPiDnsDA3hq7U6xlNHrpu',
     videoLabel: 'Cara Memilih dan Menyiapkan Casing',
   },
 ];
@@ -328,9 +328,20 @@ function openComponentModal(id) {
   `).join('');
   document.getElementById('modalVideoLabel').textContent = c.videoLabel;
 
-  // Render video — embed YouTube jika videoId ada, placeholder jika tidak
+  // Render video — embed Google Drive preview jika driveId ada, fallback YouTube videoId, atau placeholder
   const videoEl = document.getElementById('modalVideo');
-  if (c.videoId) {
+  if (c.driveId) {
+    videoEl.innerHTML = `
+      <iframe
+        width="100%" height="100%"
+        src="https://drive.google.com/file/d/${c.driveId}/preview"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        style="border-radius:12px; min-height:320px; display:block">
+      </iframe>
+    `;
+  } else if (c.videoId) {
     videoEl.innerHTML = `
       <iframe
         width="100%" height="100%"
@@ -338,7 +349,7 @@ function openComponentModal(id) {
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-        style="border-radius:12px; min-height:200px; display:block">
+        style="border-radius:12px; min-height:320px; display:block">
       </iframe>
     `;
   } else {
