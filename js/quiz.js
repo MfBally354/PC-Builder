@@ -62,7 +62,7 @@ const quizData = [
     opts: [
       'RAM yang memiliki dua kecepatan berbeda',
       'Konfigurasi dua RAM untuk meningkatkan bandwidth',
-      'RAM dengan dua jenis memori berbeda', 
+      'RAM dengan dua jenis memori berbeda',
       'RAM yang dapat diakses dua pengguna sekaligus',
     ],
     correct: 1,
