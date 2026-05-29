@@ -65,7 +65,7 @@ const quizData = [
       'RAM dengan dua jenis memori berbeda',
       'RAM yang dapat diakses dua pengguna sekaligus',
     ],
-    correct: 1,
+    correct: 1, 
   },
   {
     q: 'Komponen apa yang menghubungkan semua bagian komputer menjadi satu kesatuan?',
