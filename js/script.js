@@ -497,14 +497,14 @@ const team = [
     role: 'Animator',
     emoji: '📚',
     color: '#06B6D4',
-    desc: 'membuat konten mengenai video animasi dalam media pembelajaran.',
+    desc: 'membuat konten mengenai video animasi dalam media pembelajaran dan mengisi suara animasi.',
   },
   {
     name: 'FARREL ALENTA HANAN PRAKOSA',
     role: 'Voice Over',
     emoji: '🔍',
     color: '#10B981',
-    desc: 'Mengisi suara video animasi.',
+    desc: 'Merancang desain UI/UX menggunakan canva.',
   },
 ];
 
