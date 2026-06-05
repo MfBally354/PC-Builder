@@ -501,7 +501,7 @@ const team = [
   },
   {
     name: 'FARREL ALENTA HANAN PRAKOSA',
-    role: 'Voice Over',
+    role: 'Designer',
     emoji: '🔍',
     color: '#10B981',
     desc: 'Merancang desain UI/UX menggunakan canva.',
