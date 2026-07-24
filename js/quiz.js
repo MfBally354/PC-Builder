@@ -1,5 +1,5 @@
 // =========================================
-// PC BUILDER - QUIZ MODULES 
+// PC BUILDER - QUIZ MODULES  
 // =========================================
 
 const quizData = [
